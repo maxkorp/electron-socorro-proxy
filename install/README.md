@@ -1,7 +1,7 @@
 ## Set up this repo
 ```
 sudo yum install -y git
-sudo mkdir /usr/share/nginx/electron-socorro-proxy
+sudo mkdir -p /usr/share/nginx/electron-socorro-proxy
 sudo chown `whoami` /usr/share/nginx/electron-socorro-proxy
 git clone https://github.com/maxkorp/electron-socorro-proxy /usr/share/nginx/electron-socorro-proxy
 cd /usr/share/nginx/electron-socorro-proxy/install
