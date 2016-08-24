@@ -4,22 +4,35 @@
   "description": "Documentation and proxy code for allowing electron crash reporter to work with socorro",
   "main": "index.js",
   "scripts": {
-    "start": "node main.js"
+    "start": "node main.js",
+    "lint": "eslint routes main.js"
   },
   "author": "Max Korp <maxkorp@8bytealchemy.com>",
   "license": "MIT",
-  "engines" : {
-    "node" : ">=6.2.0"
+  "engines": {
+    "node": ">=6.2.0"
   },
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/maxkorp/electron-socorro-proxy.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxkorp/electron-socorro-proxy.git"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.13.4",
     "form-data": "^1.0.0-rc4",
+    "fs-extra-promise": "^0.4.0",
+    "moment": "^2.14.1",
     "multer": "^1.1.0",
     "request": "^2.72.0",
+    "unzip": "^0.1.11",
     "uuid-v4": "^0.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.3.1",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.1.0",
+    "eslint-plugin-react": "^6.1.2"
   }
 }
