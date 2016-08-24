@@ -2,17 +2,16 @@ const fs = require('fs');
 const moment = require('moment');
 const multer = require('multer');
 const request = require('request');
-const url = require('url');
 const uuid = require('uuid-v4');
-
 const config = require('../config');
-const upload = multer({ dest: 'uploads/' })
 
-const sumbit = (reqIn, resIn) => {
+const upload = multer({ dest: 'uploads/' });
+
+const submit = (reqIn, resIn) => {
   const guid = uuid();
   const logBase = (logger, args) => {
     const message = args.join('\n');
-    const now = ${moment().format(YY.MM.DD);
+    const now = moment().format('YY.MM.DD-HH.MM.SS');
     logger(`${now} - ${guid}: ${message}`);
   };
 
@@ -34,23 +33,23 @@ const sumbit = (reqIn, resIn) => {
   Object.keys(reqIn.body).forEach((key) => {
     formData[key] = reqIn.body[key];
   });
-  formData.Version = formData._version;
-  formData.ProductName = formData._productName;
+  formData.Version = formData._version; // eslint-disable-line no-underscore-dangle
+  formData.ProductName = formData._productName; // eslint-disable-line no-underscore-dangle
   formData.upload_file_minidump = fs.createReadStream(reqIn.file.path);
 
   const headers = {};
   Object.keys(reqIn.headers).forEach((key) => {
-    if (key.indexOf('content-') == -1) {
+    if (key.indexOf('content-') === -1) {
       headers[key] = reqIn.headers[key];
     }
   });
   headers.Host = config.hostHeader;
   headers.host = config.hostHeader;
 
-  var postData = {
+  const postData = {
     url: config.url,
-    formData: formData,
-    headers: headers
+    formData,
+    headers
   };
 
   log('posting now');
@@ -60,8 +59,8 @@ const sumbit = (reqIn, resIn) => {
       resIn.status(500).send(err);
     })
     .on('response', (resUpstream) => {
-      var body = '';
-      resUpstream.on('data', function(data) {
+      let body = '';
+      resUpstream.on('data', (data) => {
         body += data;
       });
       resUpstream.on('end', () => {
