@@ -1,0 +1,25 @@
+{
+  "name": "electron-socorro-proxy",
+  "version": "0.1.0",
+  "description": "Documentation and proxy code for allowing electron crash reporter to work with socorro",
+  "main": "index.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "Max Korp <maxkorp@8bytealchemy.com>",
+  "license": "MIT",
+  "engines" : {
+    "node" : ">=6.2.0"
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/maxkorp/electron-socorro-proxy.git"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "form-data": "^1.0.0-rc4",
+    "multer": "^1.1.0",
+    "request": "^2.72.0",
+    "uuid-v4": "^0.1.0"
+  }
+}
